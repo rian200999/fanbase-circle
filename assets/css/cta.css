@@ -1,0 +1,109 @@
+/* =========================================
+   SECTION: FINAL CALL TO ACTION (CTA)
+   ========================================= */
+.fc-final-cta {
+    padding: 100px 0 140px;
+    background: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner {
+    position: relative;
+    /* GANTI: Dari biru ke Deep Dark Olive & Olive Gradient */
+    background: linear-gradient(135deg, #1A1A00 0%, #3D3D00 50%, #5C5C00 100%);
+    border-radius: 40px;
+    padding: 100px 60px;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    /* Shadow diganti warnanya ke Olive gelap */
+    box-shadow: 0 30px 60px rgba(61, 61, 0, 0.25);
+    border: 1px solid rgba(255, 255, 0, 0.1);
+}
+
+/* Update Button Primary biar kontras di atas background gelap */
+.btn-cta-primary {
+    background: var(--tp-yellow); 
+    color: #1A1A00; /* Teks button jadi hitam olive */
+    padding: 18px 35px; 
+    border-radius: 14px; 
+    font-weight: 800;
+    text-decoration: none; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+    transition: all 0.3s ease; 
+    box-shadow: 0 10px 20px rgba(255, 255, 0, 0.2);
+}
+
+/* Ornamen pendaran cahayanya juga kita sesuaikan */
+.orb-1 { top: -50px; left: -50px; width: 250px; height: 250px; background: rgba(255, 255, 0, 0.15); border-radius: 50%; filter: blur(80px); }
+.orb-2 { bottom: -50px; right: -50px; width: 300px; height: 300px; background: rgba(128, 128, 0, 0.2); border-radius: 50%; filter: blur(100px); }
+
+/* Ornamen Floating */
+.cta-ornament {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+
+
+.card-fly {
+    top: 20%; right: 10%; font-size: 120px; color: white;
+    transform: rotate(15deg); opacity: 0.05;
+}
+
+/* Content Area */
+.cta-content { position: relative; z-index: 5; }
+
+.cta-title {
+    font-size: 48px; font-weight: 800; line-height: 1.1;
+    margin-bottom: 25px; letter-spacing: -1.5px;
+}
+.cta-title span { color: var(--tp-yellow); }
+
+.cta-subtitle {
+    font-size: 18px; color: rgba(255, 255, 255, 0.8);
+    max-width: 600px; margin: 0 auto 45px; line-height: 1.7;
+}
+
+/* Buttons */
+.cta-buttons {
+    display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;
+}
+
+
+.btn-cta-primary:hover {
+    transform: translateY(-5px); background: #FFFF00;
+    box-shadow: 0 15px 30px rgba(255, 255, 0, 0.4);
+}
+
+.btn-cta-secondary {
+    background: rgba(255, 255, 255, 0.1); color: white;
+    padding: 18px 35px; border-radius: 14px; font-weight: 700;
+    text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+.btn-cta-secondary:hover { background: rgba(255, 255, 255, 0.2); }
+
+/* Trust Elements */
+.cta-trust {
+    display: flex; justify-content: center; gap: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px; max-width: 700px; margin: 0 auto;
+}
+.trust-item {
+    font-size: 13px; font-weight: 600; color: rgba(255, 255, 255, 0.6);
+    display: flex; align-items: center; gap: 6px;
+}
+.trust-item i { color: var(--tp-yellow); font-size: 18px; }
+
+/* Responsive */
+@media (max-width: 992px) {
+    .cta-banner { padding: 60px 30px; }
+    .cta-title { font-size: 36px; }
+    .cta-buttons { flex-direction: column; }
+    .btn-cta-primary, .btn-cta-secondary { width: 100%; justify-content: center; }
+    .cta-trust { flex-direction: column; gap: 10px; }
+}

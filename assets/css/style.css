@@ -1,61 +1,128 @@
+/* =========================================
+   1. ROOT VARIABLES (Golden Olive Fresh)
+   ========================================= */
 :root {
-    /* PALET WARNA HIJAU */
-    --tp-darkest: #011E17;     /* Ijo sangat tua (Background) */
-    --tp-dark: #022C22;        /* Ijo Tua (Card/Elevated) */
-    --tp-green: #059669;       /* Ijo Medium (Primary Button/Accent) */
-    --tp-light: #34D399;       /* Ijo Muda (Highlight/Glow) */
-    
-    --tp-text-main: #ECFDF5;   /* Putih kehijauan */
-    --tp-text-muted: #A7F3D0;  /* Ijo pudar untuk teks sekunder */
-    --tp-border: rgba(52, 211, 153, 0.15); /* Border ijo transparan */
-    
+    --tp-olive: #808000;
+    --tp-yellow: #FFFF00;
+    --tp-dark-olive: #556B2F;
+    --tp-bg-main: #FFFDF7;
+    /* Light & Soft Background */
+
+    --tp-text-main: #3D3D00;
+    --tp-text-body: #555500;
+    --tp-border: rgba(128, 128, 0, 0.15);
     --tp-transition: all 0.3s ease;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* =========================================
+   2. BASE & RESET
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--tp-darkest);
+    background-color: var(--tp-bg-main);
     color: var(--tp-text-main);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-a { text-decoration: none; transition: var(--tp-transition); }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+a {
+    text-decoration: none;
+    transition: var(--tp-transition);
+}
 
-/* HEADER STYLING */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* =========================================
+   3. HEADER & NAVBAR (Gaya Portofolio)
+   ========================================= */
 .header {
-    position: fixed; top: 0; left: 0; width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     padding: 20px 0;
-    background: rgba(1, 30, 23, 0.85); /* Ijo transparan */
+    background: rgba(255, 253, 247, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--tp-border);
     z-index: 1000;
 }
 
-.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-.logo { font-size: 24px; font-weight: 800; color: var(--tp-text-main); }
-.logo span { color: var(--tp-light); }
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--tp-text-main);
+}
 
-.navbar { display: flex; align-items: center; gap: 32px; }
-.nav-link { font-size: 15px; font-weight: 500; color: var(--tp-text-muted); }
-.nav-link:hover, .nav-link.active { color: var(--tp-light); }
+.logo span {
+    color: var(--tp-olive);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-link {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--tp-text-body);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--tp-olive);
+}
 
 .btn-cta-nav {
     padding: 10px 24px;
-    background: var(--tp-green);
+    background: var(--tp-olive);
     color: #fff !important;
-    border-radius: 8px; font-weight: 600; font-size: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(128, 128, 0, 0.15);
 }
-.btn-cta-nav:hover { background: var(--tp-light); color: var(--tp-darkest) !important; }
 
-.menu-icon { display: none; font-size: 28px; color: var(--tp-text-main); cursor: pointer; }
+.btn-cta-nav:hover {
+    background: var(--tp-dark-olive);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(128, 128, 0, 0.25);
+}
+
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    color: var(--tp-text-main);
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
-    .navbar { display: none; }
-    .menu-icon { display: block; }
+    .navbar {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
 }

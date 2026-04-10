@@ -1,0 +1,148 @@
+/* =========================================
+   SECTION: KATEGORI KOMUNITAS (Expanding Panels)
+   ========================================= */
+.fc-kategori {
+    padding: 120px 0;
+    background: #FFFFFF;
+    position: relative;
+    border-top: 1px solid var(--tp-border);
+    overflow: hidden;
+}
+
+/* Header Alignment (Sudah Diubah ke Tengah) */
+.kat-header {
+    margin: 0 auto 50px auto; /* Bikin kontainer ke tengah layar */
+    max-width: 800px !important;
+    text-align: center; /* Bikin teks dan badge rata tengah */
+}
+
+.kat-title {
+    font-size: 46px; font-weight: 800; color: var(--tp-text-main);
+    line-height: 1.15; margin-bottom: 20px; letter-spacing: -1px;
+}
+.kat-title span { color: var(--tp-olive); }
+
+.kat-subtitle {
+    font-size: 17px; color: var(--tp-text-body);
+    line-height: 1.7; opacity: 0.9;
+}
+
+/* --- THE EXPANDING GALLERY --- */
+.kat-gallery {
+    display: flex;
+    width: 100%;
+    height: 500px; /* Tinggi galeri */
+    gap: 15px;
+}
+
+/* Base Panel Styles */
+.kat-panel {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    flex: 0.5; /* Proporsi saat menyempit */
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Efek smooth */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Hover/Active State -> Panel Melebar */
+.kat-panel.active {
+    flex: 4; /* Proporsi saat melebar (jauh lebih besar) */
+    box-shadow: 0 20px 40px rgba(128,128,0,0.3);
+}
+
+/* Icon Bulat di Bawah */
+.panel-icon {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 24px; color: white;
+    transition: all 0.3s ease;
+    z-index: 5;
+}
+
+.kat-panel.active .panel-icon {
+    background: var(--tp-yellow);
+    color: var(--tp-text-main);
+    border-color: var(--tp-yellow);
+}
+
+/* Konten Teks di Dalam Panel */
+.panel-content {
+    position: absolute;
+    bottom: 30px;
+    left: 100px; /* Beri jarak agar tidak nabrak icon */
+    right: 30px;
+    opacity: 0; /* Hilang saat menyempit */
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    transition-delay: 0s;
+    z-index: 5;
+    pointer-events: none;
+    white-space: nowrap; /* Mencegah teks turun aneh saat transisi */
+}
+
+.kat-panel.active .panel-content {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s; /* Muncul setelah panel selesai melebar */
+    white-space: normal;
+}
+
+.panel-content h3 {
+    font-size: 28px; font-weight: 800; color: white;
+    margin-bottom: 10px;
+}
+
+.panel-content p {
+    font-size: 14px; color: rgba(255,255,255,0.8);
+    line-height: 1.6; margin: 0; max-width: 450px;
+}
+
+/* Teks Vertikal saat Panel Menyempit */
+.panel-vertical-text {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+    transform-origin: left bottom;
+    font-size: 14px; font-weight: 800; letter-spacing: 2px;
+    color: white; opacity: 1;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+.kat-panel.active .panel-vertical-text {
+    opacity: 0; /* Hilang saat panel melebar */
+}
+
+/* Responsive Mobile */
+@media (max-width: 992px) {
+    .kat-gallery {
+        flex-direction: column; /* Berubah jadi tumpukan ke bawah di HP */
+        height: 700px;
+    }
+    .kat-panel { flex: 0.5; }
+    .kat-panel.active { flex: 3; }
+    .panel-vertical-text {
+        bottom: auto; top: 50%; left: 30px;
+        transform: translateY(-50%); /* Balikin ke horizontal di HP */
+    }
+    .panel-icon { left: 20px; bottom: 20px; width: 40px; height: 40px; font-size: 18px; }
+    .panel-content { left: 80px; bottom: 20px; right: 20px; }
+    .panel-content h3 { font-size: 20px; }
+    .panel-content p { font-size: 12px; }
+}

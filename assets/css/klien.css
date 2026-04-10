@@ -1,0 +1,83 @@
+/* =========================================
+   SECTION: KLIEN & PARTNER (Infinite Marquee FIXED)
+   ========================================= */
+.fc-klien {
+    padding: 80px 0 100px;
+    background: linear-gradient(135deg, #FFFDF7 0%, rgba(128,128,0,0.02) 50%, #FFFFFF 100%);
+    position: relative;
+    border-top: 1px solid var(--tp-border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.klien-glow-center {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 600px; height: 300px; background: radial-gradient(circle, rgba(128,128,0,0.05) 0%, transparent 70%);
+    filter: blur(40px); z-index: 0; pointer-events: none;
+}
+
+.klien-header { text-align: center; position: relative; z-index: 1; margin-bottom: 20px; }
+.klien-subtitle { font-size: 14px; font-weight: 800; color: var(--tp-text-body); text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
+
+.marquee-wrapper {
+    width: 100%; max-width: 1400px; position: relative; z-index: 1;
+    display: flex; flex-direction: column; gap: 0px; /* Gap dinolin karena udah di-cover padding */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.marquee-track { display: flex; width: fit-content; }
+
+/* Animasi Kiri & Kanan */
+.track-left { animation: scrollLeft 40s linear infinite; }
+.track-right { animation: scrollRight 40s linear infinite; }
+
+.marquee-wrapper:hover .track-left,
+.marquee-wrapper:hover .track-right {
+    animation-play-state: paused;
+}
+
+.marquee-content {
+    display: flex; align-items: center; gap: 20px;
+    /* PERBAIKAN: Padding atas bawah 20px biar border/shadow ga kepotong pas membesar */
+    padding: 20px 10px; 
+}
+
+.klien-item {
+    background: #FFFFFF; border: 1px solid var(--tp-border);
+    padding: 15px 30px; border-radius: 100px;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 15px; font-weight: 700; color: var(--tp-text-body);
+    white-space: nowrap; box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    transition: all 0.3s ease; cursor: pointer;
+    filter: grayscale(100%) opacity(0.7);
+}
+.klien-item i { font-size: 20px; color: var(--tp-olive); }
+
+.klien-item:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.05);
+    border-color: var(--tp-olive);
+    box-shadow: 0 10px 25px rgba(128,128,0,0.15);
+    color: var(--tp-olive);
+}
+
+/* PERBAIKAN: Animasi jalan tanpa kepotong */
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+    /* Dimulai dari minus 50, bergerak ke 0 (karena ini flex, dia narik content yang duplikat) */
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    .klien-item { padding: 12px 24px; font-size: 13px; }
+    .klien-item i { font-size: 18px; }
+    .marquee-wrapper { -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
+}

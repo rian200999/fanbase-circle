@@ -1,49 +1,39 @@
 window.initHargaLogic = function() {
-    // 1. Animasi Counter untuk Harga
-    const priceCounters = document.querySelectorAll('.counter-price');
+    const toggleInput = document.getElementById('billing-checkbox');
+    const labelBulan = document.getElementById('label-bulan');
+    const labelTahun = document.getElementById('label-tahun');
     
-    if (priceCounters.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const updateCount = () => {
-                        const target = +counter.getAttribute('data-target');
-                        const count = +counter.innerText;
-                        const inc = target / 20;
+    // Element harga yang mau diubah
+    const pricePro = document.getElementById('price-pro');
 
-                        if (count < target) {
-                            counter.innerText = Math.ceil(count + inc);
-                            setTimeout(updateCount, 25);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    updateCount();
-                    observer.unobserve(counter);
-                }
-            });
-        }, { threshold: 0.5 });
+    if (!toggleInput || !pricePro) return;
 
-        priceCounters.forEach(counter => observer.observe(counter));
-    }
+    // Set kondisi awal (Bulanan)
+    labelBulan.classList.add('active');
 
-    // 2. Efek Interaktif Kursor di Kartu Gelap
-    const passCards = document.querySelectorAll('.tech-pass-card');
-    
-    passCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+    toggleInput.addEventListener('change', () => {
+        if (toggleInput.checked) {
+            // Jika Tahunan (Misal diskon jadi 80K per bulan, ditagih tahunan)
+            labelBulan.classList.remove('active');
+            labelTahun.classList.add('active');
+            
+            // Animasi ganti angka kecil-kecilan
+            pricePro.style.opacity = '0';
+            setTimeout(() => {
+                pricePro.innerHTML = 'Rp 80K<span>/bln</span>';
+                pricePro.style.opacity = '1';
+            }, 200);
 
-            // Bikin efek gradient tipis ngikutin mouse
-            card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(52, 211, 153, 0.1) 0%, #011E17 50%)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            // Balikin ke ijo gelap pekat
-            card.style.background = '#011E17';
-        });
+        } else {
+            // Jika Bulanan kembali
+            labelTahun.classList.remove('active');
+            labelBulan.classList.add('active');
+            
+            pricePro.style.opacity = '0';
+            setTimeout(() => {
+                pricePro.innerHTML = 'Rp 99K<span>/bln</span>';
+                pricePro.style.opacity = '1';
+            }, 200);
+        }
     });
 };

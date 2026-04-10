@@ -1,0 +1,237 @@
+/* =========================================
+   SECTION: SOLUSI (Community Engine Layout)
+   ========================================= */
+.fc-solusi {
+    padding: 120px 0;
+    background-color: var(--tp-bg-main);
+    /* Light background */
+    overflow: hidden;
+    position: relative;
+}
+
+.solusi-header {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.solusi-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--tp-text-main);
+    letter-spacing: -1px;
+}
+
+.solusi-title span {
+    color: var(--tp-olive);
+}
+
+.solusi-subtitle {
+    font-size: 18px;
+    color: var(--tp-text-body);
+    max-width: 700px;
+    margin: 15px auto 0;
+    line-height: 1.6;
+}
+
+/* Engine Layout */
+.engine-container {
+    position: relative;
+    height: 650px;
+    /* Dipertinggi sedikit untuk 4 nodes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Central Core */
+.engine-core {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    z-index: 10;
+}
+
+.core-inner {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border: 3px solid var(--tp-olive);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: var(--tp-olive);
+    box-shadow: 0 10px 30px rgba(128, 128, 0, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.core-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--tp-yellow);
+    border-radius: 50%;
+    filter: blur(25px);
+    opacity: 0.4;
+    animation: pulseCore 2.5s infinite ease-in-out;
+}
+
+/* Feature Nodes */
+.feature-node {
+    position: absolute;
+    width: 380px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.node-content {
+    background: #FFFFFF;
+    border: 1px solid var(--tp-border);
+    padding: 25px;
+    border-radius: 20px;
+    display: flex;
+    gap: 20px;
+    transition: var(--tp-transition);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    position: relative;
+    z-index: 2;
+}
+
+.feature-node:hover .node-content {
+    border-color: var(--tp-olive);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(128, 128, 0, 0.15);
+}
+
+.node-icon {
+    flex-shrink: 0;
+    width: 55px;
+    height: 55px;
+    background: rgba(128, 128, 0, 0.1);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--tp-olive);
+}
+
+.node-text h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--tp-text-main);
+    margin-bottom: 8px;
+}
+
+.node-text p {
+    font-size: 13px;
+    color: var(--tp-text-body);
+    line-height: 1.6;
+}
+
+/* Positions & Layout untuk 4 Item */
+.f-database {
+    top: 10%;
+    left: 0;
+}
+
+.f-finance {
+    top: 10%;
+    right: 0;
+    flex-direction: row-reverse;
+}
+
+.f-event {
+    bottom: 10%;
+    left: 0;
+}
+
+.f-idcard {
+    bottom: 10%;
+    right: 0;
+    flex-direction: row-reverse;
+}
+
+/* Connector Lines (Sirkuit) */
+.connector-line {
+    position: absolute;
+    height: 2px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Penyesuaian rotasi garis ke pusat */
+.f-database .connector-line {
+    width: 150px;
+    right: -120px;
+    top: 50%;
+    background: linear-gradient(90deg, var(--tp-olive), transparent);
+    transform: rotate(25deg);
+}
+
+.f-finance .connector-line {
+    width: 150px;
+    left: -120px;
+    top: 50%;
+    background: linear-gradient(-90deg, var(--tp-olive), transparent);
+    transform: rotate(-25deg);
+}
+
+.f-event .connector-line {
+    width: 150px;
+    right: -120px;
+    top: 50%;
+    background: linear-gradient(90deg, var(--tp-olive), transparent);
+    transform: rotate(-25deg);
+}
+
+.f-idcard .connector-line {
+    width: 150px;
+    left: -120px;
+    top: 50%;
+    background: linear-gradient(-90deg, var(--tp-olive), transparent);
+    transform: rotate(25deg);
+}
+
+@keyframes pulseCore {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+}
+
+/* Responsive Mobile */
+@media (max-width: 992px) {
+    .engine-container {
+        height: auto;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .feature-node {
+        position: static;
+        width: 100%;
+        flex-direction: row !important;
+        /* Reset agar icon selalu di kiri di HP */
+    }
+
+    .connector-line,
+    .engine-core {
+        display: none;
+    }
+}

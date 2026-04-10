@@ -1,36 +1,45 @@
-// assets/js/hero.js
 window.initHeroLogic = function() {
-    // Vanilla JS 3D Tilt Effect untuk bento box
-    const tiltElements = document.querySelectorAll('[data-tilt]');
-    
-    if (tiltElements.length === 0) return;
+    const zone = document.getElementById('hero-interaction-zone');
+    const rianCard = document.getElementById('card-rian');
+    const mootiaraCard = document.getElementById('card-mootiara');
 
-    tiltElements.forEach(el => {
-        el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left; // Posisi X mouse di dalam kotak
-            const y = e.clientY - rect.top;  // Posisi Y mouse di dalam kotak
-            
-            const centerX = rect.width / 2; // Titik tengah X
-            const centerY = rect.height / 2; // Titik tengah Y
-            
-            // Hitung rotasi berdasarkan jarak dari tengah (Maks 10 derajat)
-            const rotateX = ((y - centerY) / centerY) * -10; 
-            const rotateY = ((x - centerX) / centerX) * 10;
-            
-            // Terapkan kemiringan dan sedikit pembesaran
-            el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-        });
+    if (!zone || !rianCard) return;
+
+    zone.addEventListener('mousemove', (e) => {
+        const rect = zone.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
         
-        el.addEventListener('mouseleave', () => {
-            // Balik ke posisi awal dengan transisi halus
-            el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
-            el.style.transition = 'transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease';
-        });
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Hitung sudut kemiringan
+        const rotX = ((y - centerY) / centerY) * -15;
+        const rotY = ((x - centerX) / centerX) * 15;
+
+        // Pas hover, kita kasih offset tambahan biar fanning out-nya makin asik
+        rianCard.style.transform = `
+            rotateX(${rotX}deg) 
+            rotateY(${rotY - 5}deg) 
+            translateX(-60px) 
+            translateZ(50px)
+        `;
         
-        el.addEventListener('mouseenter', () => {
-            // Hilangkan transisi saat mouse bergerak di dalam biar responsif
-            el.style.transition = 'none'; 
-        });
+        mootiaraCard.style.transform = `
+            rotateX(${rotX + 5}deg) 
+            rotateY(${rotY - 15}deg) 
+            translateX(100px) 
+            translateY(-40px) 
+            translateZ(20px)
+        `;
+    });
+
+    zone.addEventListener('mouseleave', () => {
+        // Balikin ke posisi tumpukan awal
+        rianCard.style.transform = `rotateY(-10deg) rotateX(5deg)`;
+        mootiaraCard.style.transform = `rotateY(-15deg) rotateX(10deg) translateZ(-80px) translateY(-20px) translateX(30px)`;
+        
+        rianCard.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+        mootiaraCard.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
     });
 };

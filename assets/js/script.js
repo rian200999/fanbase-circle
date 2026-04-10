@@ -11,30 +11,40 @@ const loadSection = async (containerId, filePath) => {
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Load Sections
     await loadSection('app-content', './sections/hero.html');
-    await loadSection('app-content', './sections/layanan.html');
-    await loadSection('app-content', './sections/tentang.html');
-    await loadSection('app-content', './sections/karya.html'); 
-    await loadSection('app-content', './sections/harga.html');
-    await loadSection('app-content', './sections/artikel.html');
-    await loadSection('app-content', './sections/komunitas.html');
-    await loadSection('app-content', './sections/exclusive.html');
+    await loadSection('app-content', './sections/masalah.html');
+    await loadSection('app-content', './sections/fitur.html');
+    await loadSection('app-content', './sections/id-card.html');
+    await loadSection('app-content', './sections/cara-kerja.html');
+    await loadSection('app-content', './sections/dashboard.html');
+    await loadSection('app-content', './sections/keunggulan.html');
+    await loadSection('app-content', './sections/kategori.html');
+    await loadSection('app-content', './sections/integrasi.html');
+    await loadSection('app-content', './sections/statistik.html');
+    await loadSection('app-content', './sections/klien.html');
     await loadSection('app-content', './sections/testimoni.html');
-    await loadSection('app-content', './sections/kerjasama.html');
+    await loadSection('app-content', './sections/harga.html');
+    await loadSection('app-content', './sections/faq.html');
+    await loadSection('app-content', './sections/cta.html');
     await loadSection('app-footer', './sections/footer.html');
 
     // 2. Init Logics
     if (typeof window.initHeroLogic === 'function') { window.initHeroLogic(); }
-    if (typeof window.initLayananLogic === 'function') { window.initLayananLogic(); }
-    if (typeof window.initTentangLogic === 'function') { window.initTentangLogic(); }
-    if (typeof window.initKaryaLogic === 'function') { window.initKaryaLogic(); } // <--- EKSEKUSI JS KARYA
-    if (typeof window.initHargaLogic === 'function') { window.initHargaLogic(); } // <--- EKSEKUSI JS HARGA
-    if (typeof window.initArtikelLogic === 'function') { window.initArtikelLogic(); } // <--- EKSEKUSI JS ARTIKEL
-    if (typeof window.initKomunitasLogic === 'function') { window.initKomunitasLogic(); } // <--- EKSEKUSI JS KOMUNITAS
-    if (typeof window.initExclusiveLogic === 'function') { window.initExclusiveLogic(); } // <--- EKSEKUSI JS EXCLUSIVE
-    if (typeof window.initTestimoniLogic === 'function') { window.initTestimoniLogic(); } // <--- EKSEKUSI JS TESTIMONI
-    if (typeof window.initKerjasamaLogic === 'function') { window.initKerjasamaLogic(); } // <--- EKSEKUSI JS KERJASAMA
-    if (typeof window.initFooterLogic === 'function') { window.initFooterLogic(); } // <--- EKSEKUSI JS FOOTER
-    
+    if (typeof window.initMasalahLogic === 'function') { window.initMasalahLogic(); }
+    if (typeof window.initFiturLogic === 'function') { window.initFiturLogic(); }
+    if (typeof window.initIdCardLogic === 'function') { window.initIdCardLogic(); }
+    if (typeof window.initCaraKerjaLogic === 'function') { window.initCaraKerjaLogic(); }
+    if (typeof window.initDashboardLogic === 'function') { window.initDashboardLogic(); }
+    if (typeof window.initKeunggulanLogic === 'function') { window.initKeunggulanLogic(); }
+    if (typeof window.initKategoriLogic === 'function') { window.initKategoriLogic(); }
+    if (typeof window.initIntegrasiLogic === 'function') { window.initIntegrasiLogic(); }
+    if (typeof window.initStatistikLogic === 'function') { window.initStatistikLogic(); }
+    if (typeof window.initKlienLogic === 'function') { window.initKlienLogic(); }
+    if (typeof window.initTestimoniLogic === 'function') { window.initTestimoniLogic(); }
+    if (typeof window.initHargaLogic === 'function') { window.initHargaLogic(); }
+    if (typeof window.initFaqLogic === 'function') { window.initFaqLogic(); }
+    if (typeof window.initCtaLogic === 'function') { window.initCtaLogic(); }
+    if (typeof window.initFooterLogic === 'function') { window.initFooterLogic(); }
+
     // Init AOS
     if (typeof AOS !== 'undefined') { AOS.init({ once: true, duration: 800 }); }
 });

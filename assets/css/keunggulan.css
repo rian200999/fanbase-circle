@@ -1,0 +1,120 @@
+/* =========================================
+   SECTION: KEUNGGULAN (Asymmetric Bento Grid)
+   ========================================= */
+.fc-keunggulan {
+    padding: 120px 0;
+    background: #FFFFFF;
+    position: relative;
+    border-top: 1px solid var(--tp-border);
+}
+
+.keunggulan-wrapper {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr; /* Proporsi Kiri 40%, Kanan 60% */
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* --- KIRI: Header Sticky --- */
+.k-header-sticky {
+    position: sticky;
+    top: 120px; /* Jarak dari atas layar saat discroll */
+}
+
+.k-title {
+    font-size: 48px; font-weight: 800; color: var(--tp-text-main);
+    line-height: 1.15; margin-bottom: 24px; letter-spacing: -1px;
+}
+.k-title span { color: var(--tp-olive); }
+
+.k-subtitle {
+    font-size: 17px; color: var(--tp-text-body);
+    line-height: 1.7; opacity: 0.9; margin-bottom: 40px;
+}
+
+.k-action .btn-indigo-ghost {
+    display: inline-flex; width: fit-content;
+}
+
+/* --- KANAN: Bento Grid System --- */
+.k-bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* Card Base */
+.k-card {
+    background: #FFFDF7; /* Krem sangat soft */
+    border: 1px solid var(--tp-border);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+    cursor: pointer;
+}
+
+.k-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--tp-olive);
+    box-shadow: 0 20px 40px rgba(128, 128, 0, 0.1);
+}
+
+/* Card Sizes */
+.bento-wide { grid-column: span 2; padding: 40px; }
+.bento-box { grid-column: span 1; padding: 35px 30px; }
+
+/* Background Patterns (Hiasan tipis di dalam kartu) */
+.k-card-bg {
+    position: absolute; top: 0; right: 0; width: 100%; height: 100%;
+    opacity: 0.05; transition: opacity 0.4s ease; pointer-events: none;
+}
+.k-card:hover .k-card-bg { opacity: 0.15; }
+
+/* Custom SVG Patterns via radial/linear gradients */
+.pattern-lock { background: radial-gradient(var(--tp-olive) 2px, transparent 2px); background-size: 20px 20px; }
+.pattern-glass { background: linear-gradient(45deg, var(--tp-olive) 25%, transparent 25%, transparent 75%, var(--tp-olive) 75%, var(--tp-olive)), linear-gradient(45deg, var(--tp-olive) 25%, transparent 25%, transparent 75%, var(--tp-olive) 75%, var(--tp-olive)); background-size: 20px 20px; background-position: 0 0, 10px 10px; }
+.pattern-mobile { background: repeating-linear-gradient(0deg, transparent, transparent 10px, var(--tp-olive) 10px, var(--tp-olive) 20px); }
+
+/* Card Content */
+.k-card-content { position: relative; z-index: 2; }
+
+.bento-wide .k-card-content { display: flex; gap: 30px; align-items: flex-start; }
+@media (max-width: 600px) { .bento-wide .k-card-content { flex-direction: column; gap: 20px; } }
+
+.k-icon {
+    width: 60px; height: 60px; flex-shrink: 0;
+    background: white; border: 2px solid var(--tp-border);
+    border-radius: 16px; display: flex; justify-content: center; align-items: center;
+    font-size: 28px; color: var(--tp-olive);
+    transition: all 0.4s ease;
+}
+.k-card:hover .k-icon {
+    background: var(--tp-olive); color: white; border-color: var(--tp-olive);
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.bento-box .k-icon { margin-bottom: 25px; }
+
+.k-text h3 {
+    font-size: 22px; font-weight: 800; color: var(--tp-text-main);
+    margin-bottom: 12px; line-height: 1.3;
+}
+.k-text p {
+    font-size: 14px; color: var(--tp-text-body);
+    line-height: 1.6; opacity: 0.8; margin: 0;
+}
+
+/* Responsive Mobile */
+@media (max-width: 992px) {
+    .keunggulan-wrapper { grid-template-columns: 1fr; gap: 50px; }
+    .k-header-sticky { position: relative; top: 0; text-align: center; }
+    .k-subtitle { margin: 0 auto 30px; }
+    .k-action { display: flex; justify-content: center; }
+}
+
+@media (max-width: 768px) {
+    .k-bento-grid { grid-template-columns: 1fr; }
+    .bento-wide, .bento-box { grid-column: span 1; }
+}

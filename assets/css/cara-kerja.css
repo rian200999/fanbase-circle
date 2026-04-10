@@ -1,0 +1,167 @@
+/* =========================================
+   SECTION: CARA KERJA (Onboarding Path)
+   ========================================= */
+.fc-how-it-works {
+    padding: 120px 0;
+    /* Transisi lembut dari putih ke krem */
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF7 100%);
+    position: relative;
+    border-top: 1px solid var(--tp-border);
+    overflow: hidden;
+}
+
+.how-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 80px;
+}
+
+.how-title {
+    font-size: 42px; font-weight: 800; color: var(--tp-text-main);
+    margin-bottom: 20px; letter-spacing: -1px; line-height: 1.2;
+}
+.how-title span { color: var(--tp-olive); }
+
+.how-subtitle {
+    font-size: 17px; color: var(--tp-text-body);
+    line-height: 1.7; opacity: 0.9;
+}
+
+/* Container untuk Jalur Langkah */
+.how-path-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Garis Konektor Horizontal */
+.path-line {
+    position: absolute;
+    top: 40px; /* Sejajar dengan tengah icon */
+    left: 10%; width: 80%; height: 2px;
+    background: rgba(128, 128, 0, 0.15); /* Olive transparan */
+    z-index: 1;
+}
+
+/* Garis Animasi yang jalan */
+.path-progress {
+    height: 100%; width: 0%;
+    background: var(--tp-olive);
+    box-shadow: 0 0 10px var(--tp-olive);
+    transition: width 0.5s ease;
+}
+
+/* Grid Kartu */
+.how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Kartu Langkah */
+.how-step-card {
+    background: #FFFFFF;
+    border: 1px solid var(--tp-border);
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.how-step-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--tp-olive);
+    box-shadow: 0 20px 40px rgba(128, 128, 0, 0.1);
+}
+
+/* Angka Watermark Besar di Belakang Teks */
+.step-watermark {
+    position: absolute;
+    bottom: -20px;
+    right: 10px;
+    font-size: 150px;
+    font-weight: 900;
+    color: var(--tp-yellow);
+    opacity: 0.1;
+    line-height: 1;
+    z-index: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.how-step-card:hover .step-watermark {
+    transform: scale(1.1) translateY(-10px) rotate(-5deg);
+    opacity: 0.2;
+}
+
+/* Icon & Lingkaran */
+.step-icon-wrap {
+    position: relative; width: 80px; height: 80px;
+    margin: 0 auto 30px; display: flex; justify-content: center; align-items: center;
+}
+
+.step-icon {
+    width: 100%; height: 100%; background: #FFFFFF;
+    border: 2px solid var(--tp-olive); border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 32px; color: var(--tp-olive);
+    position: relative; z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.how-step-card:hover .step-icon {
+    background: var(--tp-olive);
+    color: #FFFFFF;
+    box-shadow: 0 10px 20px rgba(128, 128, 0, 0.2);
+}
+
+/* Efek Denyut (Pulse) */
+.step-pulse {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--tp-yellow); border-radius: 50%;
+    z-index: 1; opacity: 0; transition: all 0.3s ease;
+}
+
+.how-step-card.active-step .step-pulse {
+    animation: pulseStep 2s infinite ease-out;
+}
+
+/* Teks Kartu */
+.step-content {
+    position: relative; z-index: 2;
+}
+.step-content h3 {
+    font-size: 20px; font-weight: 800; color: var(--tp-text-main);
+    margin-bottom: 12px;
+}
+.step-content p {
+    font-size: 14px; color: var(--tp-text-body);
+    line-height: 1.6; opacity: 0.8;
+}
+
+/* Footer & Tombol */
+.how-footer {
+    text-align: center; margin-top: 60px;
+}
+
+@keyframes pulseStep {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Responsive Mobile */
+@media (max-width: 992px) {
+    .how-grid { grid-template-columns: 1fr; gap: 30px; }
+    /* Putar garis jadi vertikal di HP */
+    .path-line {
+        top: 0; left: 50%; transform: translateX(-50%);
+        width: 2px; height: 100%;
+    }
+    .path-progress { width: 100%; height: 0%; transition: height 0.5s ease; }
+    .how-title { font-size: 36px; }
+}
